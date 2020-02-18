@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style>
+    
+        
+    * {
+        margin:0;
+        padding: 0;
+      }
+    
+    
+      
+      body {
+        box-sizing: border-box;
+        background-position: center;
+        background: url("/3412810.jpg") center fixed ;
+        background-size: cover;
+        font-family: 'Raleway', sans-serif;
+        color: #ffffff  ;
+        line-height: 1.8;
+      }
+
+
+
+      #container {
+        max-width: 400px;
+        padding: 0px;
+      }       
+
+      
+      #main {
+        background-color: #021924f5;
+        padding: 15px 25px;
+        border-radius: 110px 10px 110px 10px;
+
+      }
+      #main h1,
+      #main #p1{
+          text-align: center;
+      }
+
+      #main2 {
+        background-color: #021924f5;
+        padding: 125px 25px;
+        border-radius: 15px 30px 75px 15px;
+
+      }
+      #main2 h1,
+      #main2 #p1{
+          text-align: center;
+      }
+    
+      .form-style input {
+        width: 95%;
+        padding: 10px;
+        border: 0px ;
+        border-radius: 100px;
+      }
+
+      .form-style .btn {
+        width: 100%;
+        padding: 10px;
+        margin-top: 25px;
+        background-image: linear-gradient(to right, rgb(32, 4, 68),rgb(67, 42, 136), #01a2ff);
+        color: white;
+        font-size: 18px;
+        border: 0px;
+        cursor: pointer;
+        border-radius: 20px;
+      }    
+
+      
+      footer{
+          text-align: center;
+          margin-top: 20px;
+          margin-left: 10px;
+      }
+
+      #login{
+        margin-top: 25px;
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 0px;
+        color: white;
+        background-image: linear-gradient(to left, rgb(99, 0, 145), #2d0f72);
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    
+
+      #mamad{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin-top: 5%;         
+
+      }
+
+#loginLink{
+    color: rgb(128, 83, 180); 
+    font-size: 20px;
+    margin-left: 5px;
+
+}
+
+    </style>
+</head>
+<body>
+<div id="mamad">
+    <div id="container">
+        <div id="main">
+            <h1>Register Form</h1>
+            <p id="p1">A simple register form</p>
+            <form>
+                <div class="form-style">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="firstName" id="first-name" />
+                    
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="lastName" id="last-name" />
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" />
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" />
+
+                    <button type="submit" class="btn" id="submit">Sign Up</button>
+
+                    <footer>
+                        <p>
+                            already have an account? <a href="Register.html" id="loginLink" > login </a>
+                        </p>
+                    </footer>
+
+                </div>
+            </form>
+        </div>
+    </div>
+<!-- 
+    <div id="container">
+            <div id="main2">
+                <h1>Login</h1>
+                <p id="p1">already have an account?</p>
+                <form>
+                    <div class="form-style">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" />
+                        
+                        <label for="password">password</label>
+                        <input type="text" name="password" id="password" />
+    
+                        <button type="submit" id="login">login</button>
+    
+                    </div>
+                </form>
+            </div>
+        </div> -->
+
+</div>
+
+
+
+
+<script>
+    $(document).ready(function(){
+
+$('#submit').click(function(){
+    validateForm();   
+});
+
+function validateForm(){
+
+    var nameReg = /^[A-Za-z]+$/;
+    var numberReg =  /^[0-9]+$/;
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+
+    var names = $('#first-name').val();
+    var company = $('#last-name').val();
+    var email = $('#email').val();
+    var telephone = $('#password').val();
+
+    var inputVal = new Array(names, company, email, telephone);
+
+    var inputMessage = new Array("first name", "last name", "email address", "password ");
+
+     $('.error').hide();
+
+        if(inputVal[0] == ""){
+            $('#first-name').after('<span class="error"> Please enter your ' + inputMessage[0] + '</span>'+ '<br>');
+        } 
+        else if(!nameReg.test(names)){
+            $('#first-name').after('<span class="error"> Letters only</span>');
+        }
+
+        if(inputVal[1] == ""){
+            $('#last-name').after('<span class="error"> Please enter your ' + inputMessage[1] + '</span>' + '<br>');
+        }
+
+        if(inputVal[2] == ""){
+            $('#email').after('<span class="error"> Please enter your ' + inputMessage[2] + '</span>' + '<br>');
+        } 
+        else if(!emailReg.test(email)){
+            $('#email').after('<span class="error"> Please enter a valid email address</span>' + '<br>');
+        }
+
+        if(inputVal[3] == ""){
+            $('#password').after('<span class="error"> Please enter your ' + inputMessage[3] + '</span>' + '<br>');
+        } 
+        else if(!numberReg.test(telephone)){
+            $('#password').after('<span class="error"> Numbers only</span>');
+        }
+}   
+
+});
+
+    
+    </script> 
+
+</body>
+</html>
