@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register Form</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+* {
+        margin:0;
+        padding: 0;
+      }
+    
+    
+      
+      body {
+        box-sizing: border-box;
+        background-position: center;
+        background: url("/3412810.jpg") center fixed ;
+        background-size: cover;
+        font-family: 'Raleway', sans-serif;
+        color: #ffffff  ;
+        line-height: 1.8;
+      }
+
+
+
+      #container {
+        max-width: 400px;
+        padding: 0px;
+      }       
+
+      
+      #main {
+        background-color: #022130d8;
+        padding: 15px 25px;
+        border-radius: 75px 0px 0px 10px;
+
+      }
+      #main h1,
+      #main #p1{
+          text-align: center;
+      }
+
+      #main2 {
+        background-color: #021924f5;
+        padding: 100px 25px;
+        border-radius: 10px 150px 10px 150px;
+
+      }
+      #main2 h1,
+      #main2 #p1{
+          text-align: center;
+      }
+    
+      .form-style input {
+        width: 95%;
+        padding: 10px;
+        border: 0px ;
+        border-radius: 100px;
+      }
+
+      .form-style .btn {
+        width: 100%;
+        padding: 10px;
+        margin-top: 25px;
+        background-image: linear-gradient(to right, rgb(53, 7, 112), #01a2ff);
+        color: white;
+        font-size: 18px;
+        border: 0px;
+        cursor: pointer;
+        border-radius: 20px;
+      }    
+
+      
+      footer{
+          text-align: center;
+          margin-top: 20px;
+          margin-left: 10px;
+      }
+
+      #login{
+        margin-top: 25px;
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border: 0px;
+        color: white;
+        background-image: linear-gradient(to left, rgb(99, 0, 145), #2d0f72);
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    
+
+      #mamad{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin-top: 5%;         
+
+      }
+
+#registerLink{
+    color:rgb(43, 128, 226);
+}
+    </style>
+</head>
+<body>
+    
+<div id="mamad">
+    <!-- <div id="container">
+        <div id="main">
+            <h1>Register Form</h1>
+            <p id="p1">A simple register form</p>
+            <form>
+                <div class="form-style">
+                    <label for="first-name">First Name</label>
+                    <input type="text" name="firstName" id="first-name" />
+                    
+                    <label for="last-name">Last Name</label>
+                    <input type="text" name="lastName" id="last-name" />
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" />
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" />
+
+                    <button type="submit" class="btn" id="submit">Sign Up</button>
+
+                    <footer>
+                        <p>
+                          our <a href="#" style="color: rgb(46, 102, 185); "> Terms and Services.</a>
+                        </p>
+                    </footer>
+
+                </div>
+            </form>
+        </div>
+    </div> -->
+
+    <div id="container">
+            <div id="main2">
+                <h1>Login</h1>
+                <p id="p1">already have an account?</p>
+                <form>
+                    <div class="form-style">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" />
+                        
+                        <label for="password">password</label>
+                        <input type="text" name="password" id="password" />
+    
+                        <button type="submit" id="login">login</button>
+                        <footer>
+                        <p>
+                            don't have an account? <a href="page.html" id="registerLink">Register</a>
+                        </p>
+                    </footer>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+</div>
+
+
+
+    <script>
+    $(document).ready(function(){
+
+$('#submit').click(function(){
+    validateForm();   
+});
+
+function validateForm(){
+
+    var nameReg = /^[A-Za-z]+$/;
+    var numberReg =  /^[0-9]+$/;
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+
+    var names = $('#first-name').val();
+    var company = $('#last-name').val();
+    var email = $('#email').val();
+    var telephone = $('#password').val();
+
+    var inputVal = new Array(names, company, email, telephone);
+
+    var inputMessage = new Array("first name", "last namr", "email address", "password ");
+
+     $('.error').hide();
+
+        if(inputVal[0] == ""){
+            $('#first-name').after('<span class="error"> Please enter your ' + inputMessage[0] + '</span>');
+        } 
+        else if(!nameReg.test(names)){
+            $('#first-name').after('<span class="error"> Letters only</span>');
+        }
+
+        if(inputVal[1] == ""){
+            $('#last-name').after('<span class="error"> Please enter your ' + inputMessage[1] + '</span>');
+        }
+
+        if(inputVal[2] == ""){
+            $('#email').after('<span class="error"> Please enter your ' + inputMessage[2] + '</span>');
+        } 
+        else if(!emailReg.test(email)){
+            $('#email').after('<span class="error"> Please enter a valid email address</span>');
+        }
+
+        if(inputVal[3] == ""){
+            $('#password').after('<span class="error"> Please enter your ' + inputMessage[3] + '</span>');
+        } 
+        else if(!numberReg.test(telephone)){
+            $('#password').after('<span class="error"> Numbers only</span>');
+        }
+}   
+
+});
+
+    
+    </script>
+</body>
+</html>
