@@ -1,0 +1,1 @@
+this is a simple page with html,css and flexbox for login and register of a modern website
